@@ -26,3 +26,6 @@
     npm run dev
 ```
 
+### Setup tailwind
+[Tailwind official instruction doc](https://tailwindcss.com/docs/guides/vite)
+
