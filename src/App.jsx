@@ -8,7 +8,7 @@ function App(){
     <div>
       <Routes>
 
-      <Route path="/lms-frontend/" element={<HomePage />} ></Route>
+      <Route path="/" element={<HomePage />} ></Route>
           
       </Routes>
     </div>
