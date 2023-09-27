@@ -1,9 +1,20 @@
 import {AiFillCloseCircle} from 'react-icons/ai';
 import {FiMenu} from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Footer from '../Components/Footer';
 function HomeLayout({ children }) {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    //to checking if user is loggrd in
+    const isLoggedIn = useSelector((state) => state?.auth?.isLoggedIn);
+
+    //for displaying the options acc to role
+
+    const role = useSelector((state) => state?.auth?.role);
 
     function changeWidth() {
         const drawerSide = document.getElementsByClassName("drawer-side");
@@ -41,8 +52,14 @@ function HomeLayout({ children }) {
                             </button>
                         </li>
                         <li>
-                            <Link to="/">Home</Link>
+                            <Link to="/lms-frontend">Home</Link>
                         </li>
+
+                         {isLoggedIn && role === 'ADMIN' && (
+                            <li>
+                                <Link to="/admin/dashboard">Admin DashBoard</Link>
+                            </li>
+                         )}   
 
                         <li>
                             <Link to="/courses">All Courses</Link>
@@ -55,6 +72,18 @@ function HomeLayout({ children }) {
                         <li>
                             <Link to="/about">About Us</Link>
                         </li>
+
+                            {!isLoggedIn && (
+                                <div className='w-full flex items-center justify-center'>
+                                    <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full'>
+                                        <Link to="/login">Login</Link>
+                                    </button>
+                                    <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full'>
+                                        <Link to="/signup">Signup</Link>
+                                    </button>
+                                </div>
+                            )}
+
                     </ul>
                 </div>
             </div>

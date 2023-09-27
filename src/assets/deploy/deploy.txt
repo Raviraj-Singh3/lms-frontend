@@ -1,3 +1,16 @@
+to deploy on github
+
+git init 
+git add . 
+git commit -m "add: initial files" 
+git branch -M main 
+git remote add origin https://github.com/[USER]/[REPO_NAME] 
+git push -u origin main
+
+
+base: "/lms-frontend/",
+
+
 name: Deploy
 
 on:
@@ -49,3 +62,17 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+
+
+git add . 
+git commit -m "add: deploy workflow" 
+git push
+
+
+Config -> Actions -> General -> Workflow permissions -> Read and Write permissions 
+Actions -> failed deploy -> re-run-job failed jobs 
+Pages -> gh-pages -> save
+
+### 
+ write base url in Route also 
+ <Route path="/lms-frontend" element={<HomePage />} ></Route>
