@@ -78,6 +78,7 @@ function Signup() {
         formData.append("avatar", signupData.avatar);
 
         // dispatch create account action
+        console.log("form data.", formData);
         const response = await dispatch(createAccount(formData));
         if(response?.payload?.success)
             navigate("/");
