@@ -46,6 +46,6 @@ To enable dark mode add the following in tailwind config
 ```
 And in HTML file
 ```
-    <html data-theme="cupcake"></html>
+    <html data-theme="dark"></html>
 ```
 
