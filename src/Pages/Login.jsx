@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import HomeLayout from "../Layouts/HomeLayout";
-import { loginAccountForm } from "../Redux/Slices/AuthSlice";
+import { login } from "../Redux/Slices/AuthSlice";
 
 export default function Login() {
 
@@ -27,7 +27,7 @@ export default function Login() {
         });
     }
 
-    async function loginAccount(e){
+    async function onLogin(e){
         e.preventDefault();
         
         if(!loginData.email || !loginData.password){
@@ -36,7 +36,7 @@ export default function Login() {
         }
 
         
-        const response = await dispatch(loginAccountForm(loginData));
+        const response = await dispatch(login(loginData));
 
         if(response?.payload?.success)
             navigate("/");
@@ -52,7 +52,7 @@ export default function Login() {
   return (
     <HomeLayout>
             <div className='flex overflow-x-auto items-center justify-center h-screen'>
-                <form noValidate onSubmit={loginAccount} className='flex flex-col justify-center gap-3 rounded-lg p-4 text-white w-96 shadow-[0_0_10px_black]'>
+                <form noValidate onSubmit={onLogin} className='flex flex-col justify-center gap-3 rounded-lg p-4 text-white w-96 shadow-[0_0_10px_black]'>
                     <h1 className="text-center text-2xl font-bold">Login Page</h1>
 
                     <div className='flex flex-col gap-1'>
